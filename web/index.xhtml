@@ -14,7 +14,7 @@
             <tr>
                <td>X:</td>
                <td>
-                  <h:selectOneRadio label="X" id="X" value="" required="true">
+                  <h:selectOneRadio label="X" id="X" value="#{currentPointBean.x}" required="true" requiredMessage="Значение X должно быть задано">
                      <f:selectItem itemLabel="-4" itemValue="-4" />
                      <f:selectItem itemLabel="-3" itemValue="-3" />
                      <f:selectItem itemLabel="-2" itemValue="-2" />
@@ -32,7 +32,7 @@
             <tr>
                <td>Y:</td>
                <td>
-                  <h:inputText label="Y" id="Y" value="" required="true"/>
+                  <h:inputText label="Y" id="Y" value="#{currentPointBean.y}" required="true" requiredMessage="Значение Y должно быть задано"/>
                   <h:message for="Y" style="color: red" />
                </td>
             </tr>
@@ -40,11 +40,18 @@
             <tr>
                <td>R:</td>
                <td>
-                  <p:slider label="R" id="R" step="0.25" minValue="1" maxValue="4"/>
+                  <h:outputText id="R_out" value="#{currentPointBean.r}" style="display: inline-block; width: 100px"/>
+                  <h:inputHidden id="R" value="#{currentPointBean.r}" />
+                  <p:slider for="R" display="R_out" minValue="1.0" maxValue="4.0" step="0.25" style="width: 200px; display: inline-block" />
                </td>
             </tr>
          </table>
-         <h:commandButton value="Отправить" action="" />
+         <h:commandButton id="submit" value="Проверить" action="result">
+            <f:ajax execute="@form" render="@form" />
+         </h:commandButton>
       </h:form>
+      <iframe src="result.xhtml">
+
+      </iframe>
    </h:body>
 </html>
