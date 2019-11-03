@@ -80,11 +80,11 @@ public class Point {
     }
 
     public void savePoint() {
-        try {
-            DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("ITMO");
         EntityManager entityManager = factory.createEntityManager();
