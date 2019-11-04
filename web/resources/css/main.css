@@ -1,0 +1,37 @@
+body{
+    margin: 0px;
+}
+
+#menu{
+    position: fixed;
+    z-index: 1;
+}
+
+#container_parallax{
+}
+
+#first_parallax {
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+#sec_parallax{
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100% auto;
+}
+
+#third_parallax{
+    background-repeat: no-repeat;
+    background-position: top;
+    height: 1820px;
+    background-size: 100% auto;
+}
+
+#two_float{
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100% auto;
+    height: 1400px;
+}

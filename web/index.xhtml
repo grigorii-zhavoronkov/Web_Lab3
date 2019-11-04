@@ -9,6 +9,26 @@
    <h:head>
    </h:head>
    <h:body>
+      <h:outputStylesheet library="css" name="main.css" />
+      <h:outputScript library="js" name="main.js"/>
+      <h:outputScript library="jquery" name="jq-3.4.1.js" target="head"/>
+      <h:outputScript library="jquery" name="main.js" />
+
+
+
+         <h:panelGroup layout="block" id="menu">
+            MENU
+         </h:panelGroup>
+         <h:panelGroup layout="block" id="first_parallax" style='background-image: url("#{request.contextPath}/resources/images/first_slide.png");'>
+            <h:panelGroup layout="block" id = "test" style="font-size: 27px; text-align: center; padding-top: 300px; position: absolute"> RABOTAY SUKA </h:panelGroup>
+            <h:panelGroup layout="block" id="sec_parallax" style='background-image: url("#{request.contextPath}/resources/images/sec_slide.png");'>
+               <h:panelGroup layout="block" id="third_parallax" style='background-image: url("#{request.contextPath}/resources/images/third_slide.png");'>
+               </h:panelGroup>
+               <h:panelGroup layout="block" id="two_float" style='background-image: url("#{request.contextPath}/resources/images/two_float.png");'>
+               </h:panelGroup>
+            </h:panelGroup>
+         </h:panelGroup>
+
       <h:form>
          <table>
             <tr>
