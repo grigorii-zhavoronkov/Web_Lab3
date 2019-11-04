@@ -6,6 +6,6 @@
     <managed-bean>
         <managed-bean-name>point</managed-bean-name>
         <managed-bean-class>Model.Point</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
+        <managed-bean-scope>application</managed-bean-scope>
     </managed-bean>
 </faces-config>
