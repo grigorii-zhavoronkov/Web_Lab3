@@ -8,13 +8,13 @@ $(window).scroll(function(){
         })
 
         $("#first_parallax").css({
-            "transform": "translate( 0%, -" + (st / 20) + "%"
+            "transform": "translate( 0%, -" + (st / 30) + "%"
         })
         $("#sec_parallax").css({
-            "transform": "translate( 0%, -" + (st / 10) + "%"
+            "transform": "translate( 0%, -" + (st / 20) + "%"
         })
         $("#third_parallax").css({
-            "transform": "translate( 0%, -" + (st / 9.98) + "%"
+            "transform": "translate( 0%, -" + (st / 19.98) + "%"
         });
 
 });
