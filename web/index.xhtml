@@ -78,6 +78,31 @@
             <f:ajax execute="@form" render="@form" />
          </h:commandButton>
       </h:form>
-      <iframe src="result.xhtml"></iframe>
+      <h:dataTable value="#{point.getPoints()}" var="c">
+         <h:column>
+            <f:facet name="header">
+               X
+            </f:facet>
+            #{c.x}
+         </h:column>
+         <h:column>
+            <f:facet name="header">
+               Y
+            </f:facet>
+            #{c.y}
+         </h:column>
+         <h:column>
+            <f:facet name="header">
+               R
+            </f:facet>
+            #{c.r}
+         </h:column>
+         <h:column>
+            <f:facet name="header">
+               Answer
+            </f:facet>
+            #{c.in == 1 ? "Попало" : "Не попало"}
+         </h:column>
+      </h:dataTable>
    </h:body>
 </html>
