@@ -8,35 +8,15 @@
       xmlns:p="http://primefaces.org/ui">
    <h:head>
    </h:head>
-   <h:body>
-      <h:outputStylesheet library="css" name="main.css" />
+   <h:body onload="drawBatman(1)">
       <h:outputScript library="js" name="main.js"/>
-      <h:outputScript library="jquery" name="jq-3.4.1.js" target="head"/>
-      <h:outputScript library="jquery" name="main.js" />
+      <h:outputStylesheet library="css" name="index.css"/>
+      <canvas width="400px" height="400px" id="paintCanvas"
+              style='
+              background-image: url("#{request.contextPath}/resources/images/canvas_back.png");'/>
 
 
-
-         <h:panelGroup layout="block" id="menu">
-            <h:panelGroup layout="block"></h:panelGroup>
-            MENU
-         </h:panelGroup>
-
-
-         <h:panelGroup layout="block" id="first_parallax" style='background-image: url("#{request.contextPath}/resources/images/first_slide.png");'>
-            <h:panelGroup layout="block" id = "test" style="font-size: 27px; text-align: center; padding-top: 300px; position: absolute"> RABOTAY SUKA </h:panelGroup>
-            <h:panelGroup layout="block" id="sec_parallax" style='background-image: url("#{request.contextPath}/resources/images/sec_slide.png");'>
-               <h:panelGroup layout="block" id="third_parallax">
-
-               <h:panelGroup layout="block" id="third_parallax_part_one"  style='background-image: url("#{request.contextPath}/resources/images/third_slide.png");'>
-               </h:panelGroup>
-
-               <h:panelGroup layout="block" id="two_float" style='background-image: url("#{request.contextPath}/resources/images/two_float.png");'>
-               </h:panelGroup>
-
-               </h:panelGroup>
-            </h:panelGroup>
-         </h:panelGroup>
-
+      <h:graphicImage library="images" name="batman.png" id="batman" style="display: none"/>
       <h:form>
          <table>
             <tr>
@@ -104,5 +84,6 @@
             #{c.in == 1 ? "Попало" : "Не попало"}
          </h:column>
       </h:dataTable>
+
    </h:body>
 </html>

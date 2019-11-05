@@ -1,37 +1,105 @@
 body{
     margin: 0px;
+    background-color: #222222;
 }
 
-#menu{
-    position: fixed;
-    z-index: 1;
-}
 
-#container_parallax{
-}
-
-#first_parallax {
-    background-size: 100% auto;
+#preview_text{
     background-repeat: no-repeat;
     background-position: top;
+    background-size: cover;
+    position: absolute;
+    z-index: -1;
+    height: 600px;
+    width: 100%;
 }
 
-#sec_parallax{
+#back_one{
     background-repeat: no-repeat;
     background-position: top;
-    background-size: 100% auto;
+    background-size: cover;
+    position: absolute;
+    z-index: -3;
+    height: 1800px;
+    width: 100%;
 }
 
-#third_parallax_part_one{
+#back_two{
     background-repeat: no-repeat;
     background-position: top;
-    height: 1705px;
-    background-size: 100% auto;
+    background-size: cover;
+    position: absolute;
+    z-index: -2;
+    height: 1800px;
+    width: 100%;
+
+}
+#main{
+    position: absolute;
+    z-index: 0;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    height: 6590px;
+    width: 100%;
+
 }
 
-#two_float{
+#fill_content{
+    position: absolute;
+    z-index: 0;
     background-repeat: no-repeat;
-    background-position: top;
+    background-position: bottom;
     background-size: 100% auto;
-    height: 1400px;
+    height: 6150px;
+    width: 100%;
+}
+
+
+#text_part_one{
+    width: 32%;
+    color: white;
+    padding-top: 2000px;
+    padding-left: 10%;
+    text-align: left;
+    font-size: 22px;
+    font-family: "Courier New", Courier, monospace;
+}
+#head_text{
+    padding-bottom: 30px;
+    text-align: left;
+    font-size:60px;
+    font-weight: bold;
+
+}
+
+#one_part{
+    margin-top: 1800px;
+    height: 1650px;
+}
+#two_part{
+    height: 1545px;
+}
+#three_part{
+    height: 1600px;
+}
+#time{
+    text-align: center;
+    width: 8%;
+    font-size: 30px;
+    height: 40px;
+    padding-top: 400px;
+    margin-left: 54%;
+}
+
+#button{
+    width: 100%;
+    font-size: 30px;
+    height: 40px;
+    margin-top: 360px;
+    padding-left: 35%;
+}
+
+#b_check{
+    margin-left: 29%;
 }

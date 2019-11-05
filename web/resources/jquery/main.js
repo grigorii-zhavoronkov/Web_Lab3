@@ -1,20 +1,13 @@
 $ = jQuery;
+
 $(window).scroll(function(){
 
-    var st = $(this).scrollTop();
-    console.log(st);
-        $("#test").css({
-            "transform": "translate( 0%, " + (st / 10) + "%"
-        })
-
-        $("#first_parallax").css({
-            "transform": "translate( 0%, -" + (st / 30) + "%"
-        })
-        $("#sec_parallax").css({
-            "transform": "translate( 0%, -" + (st / 20) + "%"
-        })
-        $("#third_parallax").css({
-            "transform": "translate( 0%, -" + (st / 19.98) + "%"
-        });
+    var sсrolled = $(this).scrollTop();
+    $('#preview_text').css('top',((sсrolled*.1))+'px');
+    $('#back_one').css('top',(0-(sсrolled*.2))+'px');
+    $('#back_two').css('top',(0-(sсrolled*.5))+'px');
+    $('#main').css('top',(0-(sсrolled*.8))+'px');
+    $('#fill_content').css('top',(0-(sсrolled*.65))+'px');
 
 });
+

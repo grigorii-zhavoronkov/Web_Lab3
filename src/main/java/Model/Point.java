@@ -6,8 +6,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
-@Entity
-@Table(name = "WEB_LAB3", schema = "S265077")
+//@Entity
+//@Table(name = "WEB_LAB3", schema = "S265077")
 public class Point {
     @Column(name = "X")
     private float x;
@@ -82,37 +82,37 @@ public class Point {
     public String savePoint() {
         this.correct = isCorrect() ? 1 : 0;
         this.in = isIn() ? 1 : 0;
-        try {
-            DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
 
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("ITMO");
-        EntityManager entityManager = factory.createEntityManager();
-        entityManager.getTransaction().begin();
-
-        Query q = entityManager.createNativeQuery("SELECT ID_SEQ.nextval FROM dual");
-        this.id  = (BigDecimal) q.getSingleResult();
-
-        entityManager.persist(this);
-
-        entityManager.getTransaction().commit();
-        entityManager.close();
-        factory.close();
+//        EntityManagerFactory factory = Persistence.createEntityManagerFactory("ITMO");
+//        EntityManager entityManager = factory.createEntityManager();
+//        entityManager.getTransaction().begin();
+//
+//        Query q = entityManager.createNativeQuery("SELECT ID_SEQ.nextval FROM dual");
+//        this.id  = (BigDecimal) q.getSingleResult();
+//
+//        entityManager.persist(this);
+//
+//        entityManager.getTransaction().commit();
+//        entityManager.close();
+//        factory.close();
 
         return "index.xhtml?faces-redirect=true";
     }
 
-    public List<Point> getPoints() {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("ITMO");
-        EntityManager entityManager = factory.createEntityManager();
-        TypedQuery<Point> query = entityManager.createQuery("SELECT с FROM Point AS с ORDER BY id DESC", Point.class);
-        List<Point> result = query.getResultList();
-        entityManager.close();
-        factory.close();
-        return result;
-    }
+//    public List<Point> getPoints() {
+//        EntityManagerFactory factory = Persistence.createEntityManagerFactory("ITMO");
+//        EntityManager entityManager = factory.createEntityManager();
+//        TypedQuery<Point> query = entityManager.createQuery("SELECT с FROM Point AS с ORDER BY id DESC", Point.class);
+//        List<Point> result = query.getResultList();
+//        entityManager.close();
+//        factory.close();
+//        return result;
+//    }
 
     private boolean isCorrect() {
         return true;

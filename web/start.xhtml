@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head/>
+    <h:body>
+    <h:outputStylesheet library="css" name="main.css" />
+    <h:outputScript library="js" name="main.js"/>
+    <h:outputScript library="jquery" name="jq-3.4.1.js" target="head"/>
+    <h:outputScript library="jquery" name="main.js" />
+        <h:panelGroup layout="block" id="preview_text"
+                  style='background-image: url("#{request.contextPath}/resources/images/text.png");'/>
+        <h:panelGroup layout="block" id="back_one"
+                  style='background-image: url("#{request.contextPath}/resources/images/first_slide.png");'/>
+        <h:panelGroup layout="block" id="back_two"
+                  style='background-image: url("#{request.contextPath}/resources/images/sec_slide.png");'/>
+
+        <h:panelGroup layout="block" id="main"
+                      style='background-image: url("#{request.contextPath}/resources/images/third_slide.png");'>
+
+            <h:panelGroup layout="block" id="one_part"></h:panelGroup>
+            <h:panelGroup layout="block" id="two_part"></h:panelGroup>
+            <h:panelGroup layout="block" id="three_part">
+                <h:panelGroup layout="block" id="time">22:45</h:panelGroup>
+                <h:panelGroup layout="block" id="button">
+                    <h:commandButton value="YES"/>
+                    <h:commandButton id="b_check" value="CHECK" action="index"/>
+                </h:panelGroup>
+            </h:panelGroup>
+
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" id="fill_content"
+                      style='background-image: url("#{request.contextPath}/resources/images/end.png");'>
+
+
+                <h:panelGroup layout="block" id="text_part_one">
+                    <h:panelGroup layout="block" id="head_text">
+                        About Develop
+                    </h:panelGroup>
+                    Данное сайт напсан на Java EE с помощью технологии JSF и предназаначен для обучающе-развлекательных целей.
+                    Все изображения принадлежат разработчикам и нарисованы мышью. В разработке участвовали Жаворонков Григорий(бэк) и Некрасова Анастасия(фронт).
+                    <br></br>
+                    <br>С исходным кодом можно ознакомиться на гитхабе: [здесь должна быть ссылка, Гриша, плз, мне лень].</br>
+                    <br> Наслаждайтесь. </br>
+                </h:panelGroup>
+
+        </h:panelGroup>
+    </h:body>
+</html>
