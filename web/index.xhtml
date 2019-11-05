@@ -8,7 +8,7 @@
       xmlns:p="http://primefaces.org/ui">
    <h:head>
    </h:head>
-   <h:body onload="drawBatman(1)">
+   <h:body>
       <h:outputScript library="js" name="main.js"/>
       <h:outputStylesheet library="css" name="index.css"/>
       <canvas width="400px" height="400px" id="paintCanvas"
@@ -50,11 +50,12 @@
                <td>
                   <h:outputText id="R_out" value="#{point.r}" style="display: inline-block; width: 100px"/>
                   <h:inputHidden id="R" value="#{point.r}" />
-                  <p:slider for="R" display="R_out" minValue="1.0" maxValue="4.0" step="0.25" style="width: 200px; display: inline-block" />
+                  <p:slider for="R" display="R_out" minValue="1.0" maxValue="4.0" step="0.25" style="width: 200px; display: inline-block"
+                            onSlide="drawBatman(ui.value)"/>
                </td>
             </tr>
          </table>
-         <h:commandButton id="submit" value="Проверить" action="#{point.savePoint}">
+         <h:commandButton id="submit" value="Проверить" action="#{point.savePoint()}">
             <f:ajax execute="@form" render="@form" />
          </h:commandButton>
       </h:form>
