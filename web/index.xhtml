@@ -6,86 +6,103 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-   <h:head>
-   </h:head>
-   <h:body>
-      <h:outputScript library="js" name="main.js"/>
-      <h:outputStylesheet library="css" name="index.css"/>
-      <h:link value="dshfsjfhsdjf" outcome="start" />
-      <canvas width="400px" height="400px" id="paintCanvas"
-              style='
-              background-image: url("#{request.contextPath}/resources/images/canvas_back.png");'/>
+<h:head>
+</h:head>
+<h:body>
+        <h:outputScript library="js" name="main.js"/>
+    <h:outputScript library="js" name="index_load.js"/>
+        <h:outputStylesheet library="css" name="index.css"/>
+
+    <object id="icon" type="image/svg+xml" data="resources/images/index_back.svg" width="100%" height="auto"/>
+    <h:panelGroup id="main" layout="block">
+
+        <h:panelGroup id="canvas_wrapper" layout="block" style='
+              background-image: url("#{request.contextPath}/resources/images/window.png");'>
+                <object id="circles" type="image/svg+xml" data="resources/images/vr_circle.svg" width="400px" height="400px"/>
+        <canvas width="400px" height="400px" id="paintCanvas"/>
+            </h:panelGroup>
+
+        <h:link value="dshfsjfhsdjf" outcome="start"/>
 
 
-      <h:graphicImage library="images" name="batman.png" id="batman" style="display: none"/>
-      <h:form>
-         <table>
-            <tr>
-               <td>X:</td>
-               <td>
-                  <h:selectOneRadio label="X" id="X" value="#{point.x}" required="true" requiredMessage="Значение X должно быть задано">
-                     <f:selectItem itemLabel="-4" itemValue="-4" />
-                     <f:selectItem itemLabel="-3" itemValue="-3" />
-                     <f:selectItem itemLabel="-2" itemValue="-2" />
-                     <f:selectItem itemLabel="-1" itemValue="-1" />
-                     <f:selectItem itemLabel="0" itemValue="0" />
-                     <f:selectItem itemLabel="1" itemValue="1" />
-                     <f:selectItem itemLabel="2" itemValue="2" />
-                     <f:selectItem itemLabel="3" itemValue="3" />
-                     <f:selectItem itemLabel="4" itemValue="4" />
-                  </h:selectOneRadio>
-                  <h:message for="X" style="color: red" />
-               </td>
-            </tr>
+        <h:graphicImage library="images" name="batman.png" id="batman" style="display: none"/>
+    <h:panelGroup id="form_wrapper" layout="block" style='
+              background-image: url("#{request.contextPath}/resources/images/window_form.png");'>
+        <h:form>
+            <table>
+                <tr>
+                    <td>X:</td>
+                    <td>
+                        <h:selectOneRadio label="X" id="X" value="#{point.x}" required="true"
+                                          requiredMessage="Значение X должно быть задано">
+                            <f:selectItem itemLabel="-4" itemValue="-4"/>
+                            <f:selectItem itemLabel="-3" itemValue="-3"/>
+                            <f:selectItem itemLabel="-2" itemValue="-2"/>
+                            <f:selectItem itemLabel="-1" itemValue="-1"/>
+                            <f:selectItem itemLabel="0" itemValue="0"/>
+                            <f:selectItem itemLabel="1" itemValue="1"/>
+                            <f:selectItem itemLabel="2" itemValue="2"/>
+                            <f:selectItem itemLabel="3" itemValue="3"/>
+                            <f:selectItem itemLabel="4" itemValue="4"/>
+                        </h:selectOneRadio>
+                        <h:message for="X" style="color: red"/>
+                    </td>
+                </tr>
 
-            <tr>
-               <td>Y:</td>
-               <td>
-                  <h:inputText label="Y" id="Y" value="#{point.y}" required="true" requiredMessage="Значение Y должно быть задано"/>
-                  <h:message for="Y" style="color: red" />
-               </td>
-            </tr>
+                <tr>
+                    <td>Y:</td>
+                    <td>
+                        <h:inputText label="Y" id="Y" value="#{point.y}" required="true"
+                                     requiredMessage="Значение Y должно быть задано" />
+                        <h:message for="Y" style="color: red"/>
+                    </td>
+                </tr>
 
-            <tr>
-               <td>R:</td>
-               <td>
-                  <h:outputText id="R_out" value="#{point.r}" style="display: inline-block; width: 100px"/>
-                  <h:inputHidden id="R" value="#{point.r}" />
-                  <p:slider for="R" display="R_out" minValue="1.0" maxValue="4.0" step="0.25" style="width: 200px; display: inline-block"
-                            onSlide="drawBatman(ui.value)"/>
-               </td>
-            </tr>
-         </table>
-         <h:commandButton id="submit" value="Проверить" action="#{point.savePoint()}">
-            <f:ajax execute="@form" render="@form" />
-         </h:commandButton>
-      </h:form>
-      <h:dataTable value="#{point.getPoints()}" var="c">
-         <h:column>
-            <f:facet name="header">
-               X
-            </f:facet>
-            #{c.x}
-         </h:column>
-         <h:column>
-            <f:facet name="header">
-               Y
-            </f:facet>
-            #{c.y}
-         </h:column>
-         <h:column>
-            <f:facet name="header">
-               R
-            </f:facet>
-            #{c.r}
-         </h:column>
-         <h:column>
-            <f:facet name="header">
-               Answer
-            </f:facet>
-            #{c.in == 1 ? "Попало" : "Не попало"}
-         </h:column>
-      </h:dataTable>
+                <tr>
+                    <td>R:</td>
+                    <td>
+                        <h:outputText id="R_out" value="#{point.r}" style="display: inline-block; width: 100px"/>
+                        <h:inputHidden id="R" value="#{point.r}" />
+                        <p:slider for="R" display="R_out" minValue="1.0" maxValue="4.0" step="0.25"
+                                  style="width: 200px; display: inline-block"
+                                  onSlide="drawBatman(ui.value)" />
+                    </td>
+                </tr>
+            </table>
+            <h:commandButton id="submit" value="Проверить" action="#{point.savePoint}">
+                <f:ajax execute="@form" render="@form" />
+            </h:commandButton>
+        </h:form>
+    </h:panelGroup>
 
-   </h:body>
+<!--        <h:panelGroup id="history">-->
+<!--            <h:dataTable value="#{point.points}" var="c">-->
+<!--                <h:column>-->
+<!--                    <f:facet name="header">-->
+<!--                        X-->
+<!--                    </f:facet>-->
+<!--                    #{c.x}-->
+<!--                </h:column>-->
+<!--                <h:column>-->
+<!--                    <f:facet name="header">-->
+<!--                        Y-->
+<!--                    </f:facet>-->
+<!--                    #{c.y}-->
+<!--                </h:column>-->
+<!--                <h:column>-->
+<!--                    <f:facet name="header">-->
+<!--                        R-->
+<!--                    </f:facet>-->
+<!--                    #{c.r}-->
+<!--                </h:column>-->
+<!--                <h:column>-->
+<!--                    <f:facet name="header">-->
+<!--                        Answer-->
+<!--                    </f:facet>-->
+<!--                    #{c.in == 1 ? "Попало" : "Не попало"}-->
+<!--                </h:column>-->
+<!--            </h:dataTable>-->
+<!--        </h:panelGroup>-->
+    </h:panelGroup>
+</h:body>
 </html>

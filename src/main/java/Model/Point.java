@@ -119,6 +119,7 @@ public class Point {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("ITMO");
         EntityManager entityManager = factory.createEntityManager();
         TypedQuery<Point> query = entityManager.createQuery("SELECT с FROM Point AS с ORDER BY id  DESC ", Point.class);
+        query.setMaxResults(3);
         List<Point> result = query.getResultList();
         entityManager.close();
         factory.close();

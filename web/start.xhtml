@@ -7,11 +7,11 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head/>
-    <h:body>
+    <h:body onload="load()">
     <h:outputStylesheet library="css" name="main.css" />
-    <h:outputScript library="js" name="main.js"/>
-    <h:outputScript library="jquery" name="jq-3.4.1.js" target="head"/>
-    <h:outputScript library="jquery" name="main.js" />
+    <h:outputScript library="js" name="parallax.js" />
+        <h:outputScript library="js" name="start.js"/>
+
         <h:panelGroup layout="block" id="preview_text"
                   style='background-image: url("#{request.contextPath}/resources/images/text.png");'/>
         <h:panelGroup layout="block" id="back_one"
