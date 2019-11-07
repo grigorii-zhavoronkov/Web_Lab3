@@ -42,12 +42,16 @@ function getValueCanvas() {
 
             x=x/ord;
             y=y/ord;
-            drawPoint(1,1,x,y,r_now);
-            document.getElementById('j_idt7:Y').value = y;
-            let new_x = document.getElementById("j_idt7:X:"+(4+x));
-            console.log(x);
-            new_x.checked = true;
-            document.getElementById('j_idt7:submit').click();
+            let test2 = document.getElementById("j_idt29:mouseY");
+            let test1 = document.getElementById("j_idt29:mouseX");
+            let test3 = document.getElementById("j_idt29:mouseR");
+            test1.value = x;
+            test2.value = y;
+            test3.value = r_now;
+
+
+
+            document.getElementById('j_idt29:mouseSubmit').click();
         }
 
     }
