@@ -17,17 +17,16 @@ function drawBatman (r) {
 }
 
 function getValueCanvas() {
-    console.log("hfdbjsdnfl");
      let canvas = document.getElementById('paintCanvas');
      if (canvas.getContext) {
 
          canvas.addEventListener('click', canvasClicked, false);
 
          function canvasClicked(e) {
-
-             let x = e.pageX - e.target.offsetLeft;
-             let y = e.pageY - e.target.offsetTop;
-             let r = r_now*r_const;
+             let rect = canvas.getBoundingClientRect();
+             let x = e.clientX - rect.left;
+             let y = e.clientY - rect.top;
+             let ord = r_now*r_const;
 
              if (x >= zero) {
                  x = x - zero
@@ -41,16 +40,14 @@ function getValueCanvas() {
                  y = -(y - zero);
              }
 
-             x=Math.round(x/r);
-             y=y/r;
+             x=x/ord;
+             y=y/ord;
 
-             if ([ -4, -3, -2, -1, 0, 1, 2, 3, 4].includes(x) && (-3 < y) && (y < 5)) {
-                 document.getElementById('j_idt7:Y').value = y;
-                 let new_x = document.getElementById("j_idt7:X:"+(4+x));
-                 console.log(x);
-                 new_x.checked = true;
-                 document.getElementById('j_idt7:submit').click();
-             }
+                 // document.getElementById('j_idt7:Y').value = y;
+                 // let new_x = document.getElementById("j_idt7:X:"+(4+x));
+                 // console.log(x);
+                 // new_x.checked = true;
+                 // document.getElementById('j_idt7:submit').click();
          }
 
      }
