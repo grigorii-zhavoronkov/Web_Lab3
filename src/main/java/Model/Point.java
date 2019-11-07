@@ -1,13 +1,15 @@
 package Model;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import org.primefaces.PrimeFaces;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @Entity
 @Table(name = "WEB_LAB3", schema = "S265077")
 public class Point {
@@ -24,14 +26,6 @@ public class Point {
     @Id
     @Column(name = "ID")
     private BigDecimal id;
-
-    Point(float x, float y, float r, int correct, int in){
-        this.x = x;
-        this.y = y;
-        this.r = r;
-        this.correct = correct;
-        this.in = in;
-    }
 
     public Point() {
         this.x = 0;
@@ -89,7 +83,7 @@ public class Point {
         return id;
     }
 
-    public String savePoint() {
+    public void savePoint() {
         this.correct = isCorrect() ? 1 : 0;
         this.in = isIn() ? 1 : 0;
         try {
@@ -110,27 +104,36 @@ public class Point {
         entityManager.getTransaction().commit();
         entityManager.close();
         factory.close();
-
-        return "index.xhtml?faces-redirect=true";
     }
-
 
     public List<Point> getPoints() {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("ITMO");
         EntityManager entityManager = factory.createEntityManager();
-        TypedQuery<Point> query = entityManager.createQuery("SELECT с FROM Point AS с ORDER BY id  DESC ", Point.class);
-        query.setMaxResults(3);
+        TypedQuery<Point> query = entityManager.createQuery("SELECT с FROM Point AS с ORDER BY id DESC", Point.class);
         List<Point> result = query.getResultList();
         entityManager.close();
         factory.close();
         return result;
     }
 
+    public void viewPoints() {
+        Map<String,Object> options = new HashMap<String, Object>();
+        options.put("modal", true);
+        options.put("width", 640);
+        options.put("height", 340);
+        options.put("contentWidth", "100%");
+        options.put("contentHeight", "100%");
+        options.put("headerElement", "customheader");
+        PrimeFaces.current().dialog().openDynamic("table", options, null);
+    }
+
     private boolean isCorrect() {
+        // TODO: 07.11.2019 REALIZE METHOD
         return true;
     }
 
     private boolean isIn() {
+        // TODO: Realize method
         return true;
     }
 }
