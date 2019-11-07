@@ -98,7 +98,6 @@ public class Point {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        PrimeFaces.current().ajax().update("j_idt10:submit");
         String params = String.valueOf(this.correct) + ", "
                 + String.valueOf(this.in) + ", "
                 + String.valueOf(this.x) + ", "
