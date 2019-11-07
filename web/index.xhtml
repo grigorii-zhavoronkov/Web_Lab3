@@ -69,14 +69,14 @@
                     </td>
                 </tr>
             </table>
-            <h:commandButton id="submit" value="Проверить" action="#{point.savePoint}">
-                <f:ajax execute="@form" render="@form" />
+            <h:commandButton id="submit" value="Проверить" action="#{point.savePoint()}">
+                <f:ajax listener="#{point.savePoint()}" event="change" render="history" />
             </h:commandButton>
         </h:form>
     <h:commandButton value="История запросов"/>
     </h:panelGroup>
 
-<!--        <h:panelGroup id="history">-->
+<!--        <p:outputPanel id="history">-->
 <!--            <h:dataTable value="#{point.points}" var="c">-->
 <!--                <h:column>-->
 <!--                    <f:facet name="header">-->
@@ -103,7 +103,7 @@
 <!--                    #{c.in == 1 ? "Попало" : "Не попало"}-->
 <!--                </h:column>-->
 <!--            </h:dataTable>-->
-<!--        </h:panelGroup>-->
+<!--        </p:outputPanel>-->
     </h:panelGroup>
 </h:body>
 </html>
