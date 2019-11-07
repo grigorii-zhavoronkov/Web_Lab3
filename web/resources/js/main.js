@@ -42,12 +42,12 @@ function getValueCanvas() {
 
              x=x/ord;
              y=y/ord;
-
-                 // document.getElementById('j_idt7:Y').value = y;
-                 // let new_x = document.getElementById("j_idt7:X:"+(4+x));
-                 // console.log(x);
-                 // new_x.checked = true;
-                 // document.getElementById('j_idt7:submit').click();
+             drawPoint(1,1,x,y,r_now);
+                 document.getElementById('j_idt7:Y').value = y;
+                 let new_x = document.getElementById("j_idt7:X:"+(4+x));
+                 console.log(x);
+                 new_x.checked = true;
+                 document.getElementById('j_idt7:submit').click();
          }
 
      }
@@ -59,17 +59,11 @@ function drawPoint(correct, isIn, x, y ,r) {
     let xCanvas = 0;
     let yCanvas = 0;
     if (correct!=='0'){
-        if (x<0){
-            xCanvas = 200 - Math.abs(x)*r*48;
-        } else {
-
-            xCanvas = 200 + x*r*48;
-        }
-        if (y<0){
-            yCanvas = 200 + Math.abs(y)*r*480;
-        } else {
-            yCanvas = 200 - y*r*48;
-        }
+        let ord = r*r_const;
+        x = x*ord;
+        y= y*ord;
+        xCanvas = 200 + x;
+        yCanvas = 200 - y;
 
         pointDrawCanvas(isIn, xCanvas,yCanvas, r);
     }
