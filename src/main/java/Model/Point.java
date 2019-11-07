@@ -198,6 +198,6 @@ public class Point {
         boolean wings = -abs(x/rx)/2 - (3.0/7.0)*sqrt(10)*sqrt(4-pow(abs(x/rx)-1,2)) - y/ry + (6*sqrt(10))/7.0 + 1.5 >=0;
 
         boolean full_wings = wings&&wings_y&&wings_x;
-        return full_elipce || full_smile || full_ears || full_ears2 || full_wings || chelka_full;
+        return !(full_elipce || full_smile || full_ears || full_ears2 || full_wings || chelka_full);
     }
 }
