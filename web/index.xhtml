@@ -22,7 +22,7 @@
         <canvas width="400px" height="400px" id="paintCanvas"/>
             </h:panelGroup>
 
-        <h:link value="dshfsjfhsdjf" outcome="start"/>
+        <h:panelGroup style="padding-top: 3%; padding-left: 9%;" layout="block"><h:link id="start_button" value="Закрыть программу" outcome="start"/></h:panelGroup>
 
 
         <h:graphicImage library="images" name="batman.png" id="batman" style="display: none"/>
@@ -73,6 +73,7 @@
                 <f:ajax execute="@form" render="@form" />
             </h:commandButton>
         </h:form>
+    <h:commandButton value="История запросов"/>
     </h:panelGroup>
 
 <!--        <h:panelGroup id="history">-->
