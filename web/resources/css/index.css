@@ -61,9 +61,10 @@ body{
 }
 
 #start_button{
-    font-family: "American Typewriter";
+
+    font-family: monospace;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 19px;
     color: white;
 }
 
