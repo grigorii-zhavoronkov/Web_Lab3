@@ -83,7 +83,7 @@ function pointDrawCanvas(isIn, xCanvas, yCanvas,r ) {
             ctx.fillStyle = "rgba(91,234,65,0.68)";
         }
         ctx.moveTo(125, 35);
-        ctx.arc(xCanvas, yCanvas, 6, 0, 2 * Math.PI);
+        ctx.arc(xCanvas, yCanvas, 4, 0, 2 * Math.PI);
         ctx.fill();
     }
 }

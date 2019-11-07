@@ -32,7 +32,7 @@
             <table>
                 <tr>
                     <td>X:</td>
-                    <td>
+                    <td id="x_text">
                         <h:selectOneRadio label="X" id="X" value="#{point.x}" required="true"
                                           requiredMessage="Значение X должно быть задано">
                             <f:selectItem itemLabel="-4" itemValue="-4"/>
@@ -50,9 +50,9 @@
                 </tr>
 
                 <tr>
-                    <td>Y:</td>
+                    <td style="padding-top: 20px;">Y:</td>
                     <td>
-                        <h:inputText label="Y" id="Y" value="#{point.y}" required="true"
+                        <h:inputText styleClass="y_input" label="Y" id="Y" value="#{point.y}" required="true"
                                      requiredMessage="Значение Y должно быть задано" />
                         <h:message for="Y" style="color: red"/>
                     </td>
@@ -60,20 +60,20 @@
 
                 <tr>
                     <td>R:</td>
-                    <td>
+                    <td id="td_r">
                         <h:outputText id="R_out" value="#{point.r}" style="display: inline-block; width: 100px"/>
                         <h:inputHidden id="R" value="#{point.r}" />
-                        <p:slider for="R" display="R_out" minValue="1.0" maxValue="4.0" step="0.25"
+                        <p:slider styleClass="r_input" for="R" display="R_out" minValue="1.0" maxValue="4.0" step="0.25"
                                   style="width: 200px; display: inline-block"
                                   onSlide="drawBatman(ui.value)" />
                     </td>
                 </tr>
             </table>
-            <h:commandButton id="submit" value="Проверить" action="#{point.savePoint()}">
+            <h:commandButton style="margin-right: 5px" styleClass="button_s" id="submit" value="CHECK" action="#{point.savePoint()}">
                 <f:ajax listener="#{point.savePoint()}" event="change" render="history" />
             </h:commandButton>
+            <h:commandButton styleClass="button_s" value="HISTORY"/>
         </h:form>
-    <h:commandButton value="История запросов"/>
     </h:panelGroup>
 
 <!--        <p:outputPanel id="history">-->
