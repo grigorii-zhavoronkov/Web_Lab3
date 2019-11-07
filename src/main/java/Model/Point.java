@@ -95,6 +95,7 @@ public class Point {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        PrimeFaces.current().ajax().update("j_idt10:submit");
         if (correct == 1) {
             EntityManagerFactory factory = Persistence.createEntityManagerFactory("ITMO");
             EntityManager entityManager = factory.createEntityManager();
