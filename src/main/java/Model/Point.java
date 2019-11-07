@@ -1,6 +1,9 @@
 package Model;
 
 import org.primefaces.PrimeFaces;
+import org.primefaces.context.PrimeRequestContext;
+import org.primefaces.context.PrimeFacesContext;
+import org.primefaces.context.PrimeApplicationContext;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -96,6 +99,12 @@ public class Point {
             e.printStackTrace();
         }
         PrimeFaces.current().ajax().update("j_idt10:submit");
+        String params = String.valueOf(this.correct) + ", "
+                + String.valueOf(this.in) + ", "
+                + String.valueOf(this.x) + ", "
+                + String.valueOf(this.y) + ", "
+                + String.valueOf(this.r);
+        PrimeFaces.current().executeScript("drawPoint(" + params + ")");
         if (correct == 1) {
             EntityManagerFactory factory = Persistence.createEntityManagerFactory("ITMO");
             EntityManager entityManager = factory.createEntityManager();

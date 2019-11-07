@@ -73,8 +73,7 @@
                              styleClass="button_s"
                              id="submit" value="CHECK"
                              ajax="true"
-                             actionListener="#{point.savePoint}"
-                             onsuccess="drawPoint('#{point.correct}', '#{point.in}', '#{point.x}', '#{point.y}', '#{point.r}')">
+                             actionListener="#{point.savePoint}">
             </p:commandButton>
         </h:form>
         <h:form>
@@ -85,9 +84,12 @@
             <h:inputText value="#{point.x}" id="mouseX"/>
             <h:inputText value="#{point.y}" id="mouseY"/>
             <h:inputText value="#{point.r}" id="mouseR"/>
-            <h:commandButton style="margin-right: 5px" styleClass="button_s" id="mouseSubmit" value="CHECK" action="#{point.savePoint()}">
-                <f:ajax listener="#{point.savePoint()}" event="change" render="history" />
-            </h:commandButton>
+            <p:commandButton style="margin-right: 5px"
+                             styleClass="button_s"
+                             id="mouseSubmit" value="CHECK"
+                             ajax="true"
+                             actionListener="#{point.savePoint}">
+            </p:commandButton>
         </h:form>
     </h:panelGroup>
     </h:panelGroup>
