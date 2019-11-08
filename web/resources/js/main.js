@@ -42,16 +42,16 @@ function getValueCanvas() {
 
             x=x/ord;
             y=y/ord;
-            let test2 = document.getElementById("j_idt29:mouseY");
-            let test1 = document.getElementById("j_idt29:mouseX");
-            let test3 = document.getElementById("j_idt29:mouseR");
+            let test2 = document.getElementsByClassName("mouseY")[0];
+            let test1 = document.getElementsByClassName("mouseX")[0];
+            let test3 = document.getElementsByClassName("mouseR")[0];
             test1.value = x;
             test2.value = y;
             test3.value = r_now;
 
 
 
-            document.getElementById('j_idt29:mouseSubmit').click();
+            document.getElementsByClassName('formaaaaa')[0].click();
         }
 
     }

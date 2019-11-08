@@ -80,11 +80,11 @@
         </h:form>
 
         <h:form style="display: none">
-            <h:inputText value="#{point.x}" id="mouseX"/>
-            <h:inputText value="#{point.y}" id="mouseY"/>
-            <h:inputText value="#{point.r}" id="mouseR"/>
+            <h:inputText value="#{point.x}" id="mouseX" styleClass="mouseX"/>
+            <h:inputText value="#{point.y}" id="mouseY" styleClass="mouseY"/>
+            <h:inputText value="#{point.r}" id="mouseR" styleClass="mouseR"/>
             <p:commandButton style="margin-right: 5px"
-                             styleClass="button_s"
+                             styleClass="button_s formaaaaa"
                              id="mouseSubmit" value="CHECK"
                              ajax="true"
                              actionListener="#{point.savePoint}">
@@ -93,16 +93,4 @@
     </h:panelGroup>
     </h:panelGroup>
 </h:body>
-<script>
-    /*jsf.ajax.addOnEvent(foo);
-    function foo(data) {
-        let ajaxStatus = data.status; // Can be "begin", "complete" and "success".
-
-        switch (ajaxStatus) {
-            case "success":
-                drawPoint('#{point.correct}', '#{point.in}', '#{point.x}', '#{point.y}', '#{point.r}')
-                break;
-        }
-    }*/
-</script>
 </html>
