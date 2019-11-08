@@ -51,7 +51,7 @@ body{
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: 100% auto;
-    height: 6660px;
+    height: 6600px;
     width: 100%;
 }
 
@@ -90,7 +90,7 @@ body{
     width: 8%;
     font-size: 30px;
     height: 40px;
-    padding-top: 430px;
+    padding-top: 380px;
     margin-left: 76%;
     color: white;
     font-family: monospace;
