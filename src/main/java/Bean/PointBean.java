@@ -1,7 +1,7 @@
 package Bean;
 
 
-import Entities.PointEntity;
+import Entities.Point;
 import org.primefaces.PrimeFaces;
 
 import javax.persistence.*;
@@ -16,10 +16,10 @@ import static java.lang.Math.*;
 
 public class PointBean {
 
-    private PointEntity point;
+    private Point point;
 
     public PointBean() {
-        point = new PointEntity();
+        point = new Point();
         point.setX(0);
         point.setY(0);
         point.setR(1);
@@ -57,7 +57,7 @@ public class PointBean {
         }
     }
 
-    public List<PointEntity> getPoints() {
+    public List<Point> getPoints() {
         try {
             DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
         } catch (SQLException e) {
@@ -65,8 +65,8 @@ public class PointBean {
         }
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("ITMO");
         EntityManager entityManager = factory.createEntityManager();
-        TypedQuery<PointEntity> query = entityManager.createQuery("SELECT с FROM PointEntity AS с ORDER BY id DESC", PointEntity.class);
-        List<PointEntity> result = query.getResultList();
+        TypedQuery<Point> query = entityManager.createQuery("SELECT с FROM Point AS с ORDER BY id DESC", Point.class);
+        List<Point> result = query.getResultList();
         entityManager.close();
         factory.close();
         return result;

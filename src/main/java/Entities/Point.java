@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "WEB_LAB3", schema = "S265077")
-public class PointEntity {
+public class Point {
     @Id
     @Column(name = "ID")
     private BigDecimal id;
@@ -79,7 +79,7 @@ public class PointEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        PointEntity that = (PointEntity) o;
+        Point that = (Point) o;
 
         if (Float.compare(that.x, x) != 0) return false;
         if (Float.compare(that.y, y) != 0) return false;

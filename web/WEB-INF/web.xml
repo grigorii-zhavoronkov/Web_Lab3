@@ -14,4 +14,8 @@
     <welcome-file-list>
         <welcome-file>start.xhtml</welcome-file>
     </welcome-file-list>
+    <session-config>
+        <!-- Disables URL-based sessions (no more 'jsessionid' in the URL using Tomcat) -->
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
 </web-app>
