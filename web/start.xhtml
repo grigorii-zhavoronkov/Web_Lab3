@@ -19,17 +19,13 @@
         <h:panelGroup layout="block" id="back_two"
                   style='background-image: url("#{request.contextPath}/resources/images/sec_slide.png");'/>
 
-        <h:panelGroup layout="block" id="main"
-                      style='background-image: url("#{request.contextPath}/resources/images/third_slide.png");'>
+        <h:panelGroup layout="block" id="main">
+            <object style="position: absolute; z-index: -1;" id="circles" type="image/svg+xml" data="resources/images/third_slide.svg" width="100%" height="auto"/>
 
-            <h:panelGroup layout="block" id="one_part"></h:panelGroup>
-            <h:panelGroup layout="block" id="two_part"></h:panelGroup>
+            <h:panelGroup layout="block" id="one_part"/>
+            <h:panelGroup layout="block" id="two_part"/>
             <h:panelGroup layout="block" id="three_part">
                 <h:panelGroup layout="block" id="time">22:45</h:panelGroup>
-                <h:panelGroup layout="block" id="button">
-                    <h:commandButton value="YES"/>
-                    <h:commandButton id="b_check" value="CHECK" action="index"/>
-                </h:panelGroup>
             </h:panelGroup>
 
         </h:panelGroup>
@@ -45,10 +41,12 @@
                     Данное сайт напсан на Java EE с помощью технологии JSF и предназаначен для обучающе-развлекательных целей.
                     Все изображения принадлежат разработчикам и нарисованы мышью. В разработке участвовали Жаворонков Григорий(бэк) и Некрасова Анастасия(фронт).
                     <br></br>
-                    <br>С исходным кодом можно ознакомиться на гитхабе: <a href="http://github.com/ezNNP/Web_Lab3">[здесь должна быть ссылка, Гриша, плз, мне лень].</a></br>
+                    <br>С исходным кодом можно ознакомиться на гитхабе: <a style="text-decoration: none; color: rgba(8,23,84,0.89);" href="http://github.com/ezNNP/Web_Lab3">[здесь должна быть ссылка, Гриша, плз, мне лень].</a></br>
                     <br> Наслаждайтесь. </br>
                 </h:panelGroup>
-
+            <h:panelGroup id="btn" layout="block" style="padding-top: 3270px; padding-left: 62.2%;">
+            <h:link id="index_button" value="YES" outcome="index"/>
+            </h:panelGroup>
         </h:panelGroup>
     </h:body>
 </html>

@@ -21,7 +21,7 @@ function scrollLoop() {
     setTranslate(0, yScrollPosition * -0.1, backOne);
     setTranslate(0, yScrollPosition * -0.3, backTwo);
     setTranslate(0, yScrollPosition * -0.35, main);
-    setTranslate(0, yScrollPosition * -0.5, content);
+    setTranslate(0, yScrollPosition * -0.35, content);
     setTranslate(0, yScrollPosition * 0.35, preview);
 
     requestAnimationFrame(scrollLoop);

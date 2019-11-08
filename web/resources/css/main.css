@@ -51,7 +51,7 @@ body{
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: 100% auto;
-    height: 7250px;
+    height: 6660px;
     width: 100%;
 }
 
@@ -59,12 +59,15 @@ body{
 #text_part_one{
     width: 32%;
     color: white;
-    padding-top: 2400px;
+    padding-top: 2200px;
     padding-left: 10%;
     text-align: left;
-    font-size: 22px;
+    font-size: 20px;
+    font-family: sans-serif;
+    opacity: 0.9;
 }
 #head_text{
+    opacity: 1;
     padding-bottom: 30px;
     text-align: left;
     font-size:60px;
@@ -87,17 +90,37 @@ body{
     width: 8%;
     font-size: 30px;
     height: 40px;
-    padding-top: 400px;
-    margin-left: 54%;
+    padding-top: 430px;
+    margin-left: 76%;
+    color: white;
+    font-family: monospace;
+    opacity: 0.9;
 }
 
 #button{
     font-size: 30px;
     height: 40px;
-    margin-top: 360px;
-    margin-left: 35%;
+    margin-top: 315px;
+    margin-left: 62.5%;
 }
 
 #b_check{
     margin-left: 31%;
+}
+
+#index_button{
+    text-decoration: none;
+    border: 2px solid white;
+    padding: 7px 60px;
+    border-radius: 15px;
+    color: white;
+    font-family: monospace;
+    font-size: 23px;
+    -webkit-transition: background-color 1s, color 1s, font-weight 0.5s ease;
+}
+
+#index_button:hover {
+    font-weight: bold;
+    color: black;
+    background-color: #8d938d;
 }
