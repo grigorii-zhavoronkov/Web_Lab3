@@ -1,5 +1,7 @@
-package Model;
+package Bean;
 
+
+import Entities.PointEntity;
 import org.primefaces.PrimeFaces;
 
 import javax.persistence.*;
@@ -10,106 +12,44 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static java.lang.Math.pow;
-import static java.lang.Math.abs;
-import static java.lang.Math.sqrt;
+import static java.lang.Math.*;
 
-@Entity
-@Table(name = "WEB_LAB3", schema = "S265077")
-public class Point {
-    @Column(name = "X")
-    private float x;
-    @Column(name = "Y")
-    private float y;
-    @Column(name = "R")
-    private float r;
-    @Column(name = "CORRECT")
-    private int correct; // 0 - некорректно, 1 - корректно
-    @Column(name = "ISIN")
-    private int in; // 0 - не попало, 1 - попало
-    @Id
-    @Column(name = "ID")
-    private BigDecimal id;
+public class PointBean {
 
-    public Point() {
-        this.x = 0;
-        this.y = 0;
-        this.r = 1;
-        this.correct = 0;
-        this.in = 0;
-    }
+    private PointEntity point;
 
-    public float getX() {
-        return x;
-    }
-
-    public void setX(float x) {
-        this.x = x;
-    }
-
-    public float getY() {
-        return y;
-    }
-
-    public void setY(float y) {
-        this.y = y;
-    }
-
-    public float getR() {
-        return r;
-    }
-
-    public void setR(float r) {
-        this.r = r;
-    }
-
-    public int getCorrect() {
-        return correct;
-    }
-
-    public void setCorrect(int correct) {
-        this.correct = correct;
-    }
-
-    public int getIn() {
-        return in;
-    }
-
-    public void setIn(int in) {
-        this.in = in;
-    }
-
-    public void setId(BigDecimal id) {
-        this.id = id;
-    }
-
-    public BigDecimal getId() {
-        return id;
+    public PointBean() {
+        point = new PointEntity();
+        point.setX(0);
+        point.setY(0);
+        point.setR(1);
+        point.setIn(0);
+        point.setCorrect(0);
     }
 
     public void savePoint() {
-        this.correct = isCorrect() ? 1 : 0;
-        this.in = isIn() ? 1 : 0;
+        setCorrectToPoint();
+        setInToPoint();
         try {
             DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        String params = String.valueOf(this.correct) + ", "
-                + String.valueOf(this.in) + ", "
-                + String.valueOf(this.x) + ", "
-                + String.valueOf(this.y) + ", "
-                + String.valueOf(this.r);
+        String params = String.valueOf(point.getCorrect()) + ", "
+                + String.valueOf(point.getIn()) + ", "
+                + String.valueOf(point.getX()) + ", "
+                + String.valueOf(point.getY()) + ", "
+                + String.valueOf(point.getR());
         PrimeFaces.current().executeScript("drawPoint(" + params + ")");
-        if (correct == 1) {
+        if (point.getCorrect() == 1) {
             EntityManagerFactory factory = Persistence.createEntityManagerFactory("ITMO");
             EntityManager entityManager = factory.createEntityManager();
             entityManager.getTransaction().begin();
 
             Query q = entityManager.createNativeQuery("SELECT ID_SEQ.nextval FROM dual");
-            this.id = (BigDecimal) q.getSingleResult();
+            point.setId((BigDecimal) q.getSingleResult());
 
-            entityManager.persist(this);
+            entityManager.persist(point);
 
             entityManager.getTransaction().commit();
             entityManager.close();
@@ -117,7 +57,7 @@ public class Point {
         }
     }
 
-    public List<Point> getPoints() {
+    public List<PointEntity> getPoints() {
         try {
             DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
         } catch (SQLException e) {
@@ -125,8 +65,8 @@ public class Point {
         }
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("ITMO");
         EntityManager entityManager = factory.createEntityManager();
-        TypedQuery<Point> query = entityManager.createQuery("SELECT с FROM Point AS с ORDER BY id DESC", Point.class);
-        List<Point> result = query.getResultList();
+        TypedQuery<PointEntity> query = entityManager.createQuery("SELECT с FROM PointEntity AS с ORDER BY id DESC", PointEntity.class);
+        List<PointEntity> result = query.getResultList();
         entityManager.close();
         factory.close();
         return result;
@@ -143,12 +83,36 @@ public class Point {
         PrimeFaces.current().dialog().openDynamic("table", options, null);
     }
 
-    private boolean isCorrect() {
-        return x >= -4 && x <= 4 && r >= 1 && r <= 4;
+    private void setCorrectToPoint() {
+        point.setCorrect((point.getX() >= -4) && (point.getX() <= 4) && (point.getR() >= 1) && (point.getR() <= 4) ? 1 : 0);
     }
 
-    private boolean isIn() {
-        return batman(x, y, r);
+    private void setInToPoint() {
+        point.setIn(batman(point.getX(), point.getY(), point.getR()) ? 1 : 0);
+    }
+
+    public float getX() {
+        return point.getX();
+    }
+
+    public void setX(float x) {
+        point.setX(x);
+    }
+
+    public float getY() {
+        return point.getY();
+    }
+
+    public void setY(float y) {
+        point.setY(y);
+    }
+
+    public float getR() {
+        return point.getR();
+    }
+
+    public void setR(float r) {
+        point.setR(r);
     }
 
     private boolean batman (float xx, float y, float R){
@@ -201,4 +165,5 @@ public class Point {
         boolean full_wings = wings&&wings_y&&wings_x;
         return !(full_elipce || full_smile || full_ears || full_ears2 || full_wings || chelka_full);
     }
+
 }
