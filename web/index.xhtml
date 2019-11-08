@@ -51,9 +51,11 @@
                 <tr>
                     <td style="padding-top: 20px;">Y:</td>
                     <td>
-                        <h:inputText styleClass="y_input" label="Y" id="Y" value="#{point.y}" required="true"
-                                     requiredMessage="Значение Y должно быть задано" />
-                        <h:message for="Y" style="color: red"/>
+                        <h:inputText styleClass="y_input" label="Y" id="Y" value="#{point.y}" required="true" validatorMessage="Значение Y: [-5..3]">
+                            <f:validateDoubleRange for="Y" minimum="-5" maximum="3"/>
+                            <p:ajax update="y_msg" event="keyup" />
+                        </h:inputText>
+                        <p:message id="y_msg" for="Y" style="color: red;"/>
                     </td>
                 </tr>
 

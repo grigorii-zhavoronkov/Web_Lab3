@@ -144,8 +144,7 @@ public class Point {
     }
 
     private boolean isCorrect() {
-        // TODO: 07.11.2019 REALIZE METHOD
-        return true;
+        return x >= -4 && x <= 4 && r >= 1 && r <= 4;
     }
 
     private boolean isIn() {
