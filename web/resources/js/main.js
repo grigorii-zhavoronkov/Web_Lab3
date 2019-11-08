@@ -26,7 +26,7 @@ function getValueCanvas() {
             let rect = canvas.getBoundingClientRect();
             let x = e.clientX - rect.left;
             let y = e.clientY - rect.top;
-            let ord = r_now*r_const;
+            let ord = r_const;
 
             if (x >= zero) {
                 x = x - zero
@@ -63,7 +63,7 @@ function drawPoint(correct, isIn, x, y ,r) {
     let xCanvas = 0;
     let yCanvas = 0;
     if (correct!=='0'){
-        let ord = r*r_const;
+        let ord = r_const;
         x = x*ord;
         y= y*ord;
         xCanvas = 200 + x;

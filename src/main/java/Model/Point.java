@@ -1,9 +1,6 @@
 package Model;
 
 import org.primefaces.PrimeFaces;
-import org.primefaces.context.PrimeRequestContext;
-import org.primefaces.context.PrimeFacesContext;
-import org.primefaces.context.PrimeApplicationContext;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -121,6 +118,11 @@ public class Point {
     }
 
     public List<Point> getPoints() {
+        try {
+            DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("ITMO");
         EntityManager entityManager = factory.createEntityManager();
         TypedQuery<Point> query = entityManager.createQuery("SELECT с FROM Point AS с ORDER BY id DESC", Point.class);

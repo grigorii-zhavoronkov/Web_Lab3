@@ -7,7 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head/>
-    <h:body onload="load()">
+    <h:body>
     <h:outputStylesheet library="css" name="main.css" />
     <h:outputScript library="js" name="parallax.js" />
         <h:outputScript library="js" name="start.js"/>
@@ -24,7 +24,7 @@
             <h:panelGroup layout="block" id="one_part"/>
             <h:panelGroup layout="block" id="two_part"/>
             <h:panelGroup layout="block" id="three_part">
-                <h:panelGroup layout="block" id="time">22:45</h:panelGroup>
+                <h:panelGroup layout="block" id="time" styleClass="time_gavno">22:45</h:panelGroup>
             </h:panelGroup>
 
         </h:panelGroup>
@@ -44,7 +44,7 @@
                     <br> Наслаждайтесь. </br>
                 </h:panelGroup>
             <h:panelGroup id="btn" layout="block" style="padding-top: 3270px; padding-left: 62.2%;">
-            <h:link id="index_button" value="YES" outcome="index"/>
+                <h:link id="index_button" value="YES" outcome="index"/>
             </h:panelGroup>
         </h:panelGroup>
     </h:body>
