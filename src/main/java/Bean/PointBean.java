@@ -17,6 +17,7 @@ import static java.lang.Math.*;
 public class PointBean {
 
     private Point point;
+    private EntityManagerFactory factory;
 
     public PointBean() {
         point = new Point();
@@ -25,16 +26,12 @@ public class PointBean {
         point.setR(1);
         point.setIn(0);
         point.setCorrect(0);
+        factory = Persistence.createEntityManagerFactory("ITMO");
     }
 
     public void savePoint() {
         setCorrectToPoint();
         setInToPoint();
-        try {
-            DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         String params = String.valueOf(point.getCorrect()) + ", "
                 + String.valueOf(point.getIn()) + ", "
                 + String.valueOf(point.getX()) + ", "
@@ -42,7 +39,6 @@ public class PointBean {
                 + String.valueOf(point.getR());
         PrimeFaces.current().executeScript("drawPoint(" + params + ")");
         if (point.getCorrect() == 1) {
-            EntityManagerFactory factory = Persistence.createEntityManagerFactory("ITMO");
             EntityManager entityManager = factory.createEntityManager();
             entityManager.getTransaction().begin();
 
@@ -53,22 +49,14 @@ public class PointBean {
 
             entityManager.getTransaction().commit();
             entityManager.close();
-            factory.close();
         }
     }
 
     public List<Point> getPoints() {
-        try {
-            DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("ITMO");
         EntityManager entityManager = factory.createEntityManager();
         TypedQuery<Point> query = entityManager.createQuery("SELECT с FROM Point AS с ORDER BY id DESC", Point.class);
         List<Point> result = query.getResultList();
         entityManager.close();
-        factory.close();
         return result;
     }
 

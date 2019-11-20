@@ -3,18 +3,15 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
         http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
-    <persistence-unit name="ITMO" transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <persistence-unit name="ITMO" transaction-type="JTA">
+        <jta-data-source>java:/OracleDS</jta-data-source>
         <class>Entities.Point</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:orbis" />
-            <property name="javax.persistence.jdbc.user" value="s265077" />
-            <property name="javax.persistence.jdbc.password" value="fyk919" />
-            <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
-
-            <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.format_sql" value="true" />
-            <property name="hibernate.hbm2ddl.auto" value="none" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.current_session_context_class" value="jta"/>
+            <property name="show_sql" value="false"/>
+            <property name="hibernate.show_sql" value="false" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
         </properties>
     </persistence-unit>
 
