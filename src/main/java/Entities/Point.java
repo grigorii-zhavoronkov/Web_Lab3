@@ -5,11 +5,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "WEB_LAB3", schema = "S265077")
-public class Point {
+public class Point implements Serializable {
     @Id
     @Column(name = "ID")
     private BigDecimal id;

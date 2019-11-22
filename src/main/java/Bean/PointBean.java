@@ -2,20 +2,22 @@ package Bean;
 
 
 import Entities.Point;
+import Model.PointDao;
 import org.primefaces.PrimeFaces;
 
-import javax.persistence.*;
-import java.math.BigDecimal;
+import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static java.lang.Math.*;
 
-public class PointBean {
+public class PointBean implements Serializable {
 
     private Point point;
-    private EntityManagerFactory factory;
+    @Inject
+    private PointDao pointDao;
 
     public PointBean() {
         point = new Point();
@@ -24,7 +26,6 @@ public class PointBean {
         point.setR(1);
         point.setIn(0);
         point.setCorrect(0);
-        factory = Persistence.createEntityManagerFactory("ITMO");
     }
 
     public void savePoint() {
@@ -36,26 +37,11 @@ public class PointBean {
                 + String.valueOf(point.getY()) + ", "
                 + String.valueOf(point.getR());
         PrimeFaces.current().executeScript("drawPoint(" + params + ")");
-        if (point.getCorrect() == 1) {
-            EntityManager entityManager = factory.createEntityManager();
-            entityManager.getTransaction().begin();
-
-            Query q = entityManager.createNativeQuery("SELECT ID_SEQ.nextval FROM dual");
-            point.setId((BigDecimal) q.getSingleResult());
-
-            entityManager.persist(point);
-
-            entityManager.getTransaction().commit();
-            entityManager.close();
-        }
+        pointDao.savePoint(point);
     }
 
     public List<Point> getPoints() {
-        EntityManager entityManager = factory.createEntityManager();
-        TypedQuery<Point> query = entityManager.createQuery("SELECT с FROM Point AS с ORDER BY id DESC", Point.class);
-        List<Point> result = query.getResultList();
-        entityManager.close();
-        return result;
+        return pointDao.getPoints();
     }
 
     public void viewPoints() {
