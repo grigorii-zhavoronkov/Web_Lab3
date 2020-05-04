@@ -37,7 +37,15 @@ public class PointBean implements Serializable {
                 + String.valueOf(point.getY()) + ", "
                 + String.valueOf(point.getR());
         PrimeFaces.current().executeScript("drawPoint(" + params + ")");
+
         pointDao.savePoint(point);
+
+        point = new Point();
+        point.setX(0);
+        point.setY(0);
+        point.setR(1);
+        point.setIn(0);
+        point.setCorrect(0);
     }
 
     public List<Point> getPoints() {

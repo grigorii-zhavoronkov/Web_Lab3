@@ -1,30 +1,29 @@
 package Entities;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.persistence.GeneratedValue;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "WEB_LAB3", schema = "S265077")
+@Table(name = "wl3", schema = "public")
 public class Point implements Serializable {
     @Id
-    @Column(name = "ID")
+    @GeneratedValue()
+    @Column(name = "id")
     private BigDecimal id;
 
-    @Column(name = "X")
+    @Column(name = "x")
     private float x;
-    @Column(name = "Y")
+    @Column(name = "y")
     private float y;
-    @Column(name = "R")
+    @Column(name = "r")
     private float r;
 
-    @Column(name = "CORRECT")
+    @Column(name = "correct")
     private int correct;
-    @Column(name = "ISIN")
+    @Column(name = "isin")
     private int in;
 
     public BigDecimal getId() {

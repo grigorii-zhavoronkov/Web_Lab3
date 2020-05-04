@@ -6,21 +6,21 @@
     <managed-bean>
         <managed-bean-name>point</managed-bean-name>
         <managed-bean-class>Bean.PointBean</managed-bean-class>
-        <managed-bean-scope>application</managed-bean-scope>
+        <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
 
     <navigation-rule>
-        <from-view-id>/start.xhtml</from-view-id>
+        <from-view-id>../start.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>index</from-outcome>
-            <to-view-id>/index.xhtml</to-view-id>
+            <to-view-id>../index.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
-        <from-view-id>/index.xhtml.xhtml</from-view-id>
+        <from-view-id>../index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>start</from-outcome>
-            <to-view-id>/start.xhtml</to-view-id>
+            <to-view-id>../start.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <application>

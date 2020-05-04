@@ -12,7 +12,7 @@
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>start.xhtml</welcome-file>
+        <welcome-file>../start.xhtml</welcome-file>
     </welcome-file-list>
     <session-config>
         <!-- Disables URL-based sessions (no more 'jsessionid' in the URL using Tomcat) -->

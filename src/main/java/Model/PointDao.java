@@ -3,7 +3,6 @@ package Model;
 import Entities.Point;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.*;
 import javax.persistence.EntityManager;
@@ -21,9 +20,6 @@ public class PointDao {
     @Transactional
     public void savePoint(Point point) {
         if (point.getCorrect() == 1) {
-            Query q = entityManager.createNativeQuery("SELECT ID_SEQ.nextval FROM dual");
-            point.setId((BigDecimal) q.getSingleResult());
-
             entityManager.persist(point);
         }
     }
