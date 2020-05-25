@@ -26,7 +26,7 @@ public class PointDao {
 
     public List<Point> getPoints() {
         TypedQuery<Point> query
-                = entityManager.createQuery("SELECT с FROM Point AS с ORDER BY id DESC", Point.class);
+                = entityManager.createQuery("SELECT p FROM Point p ORDER BY p.id DESC", Point.class);
         return query.getResultList();
     }
 }
