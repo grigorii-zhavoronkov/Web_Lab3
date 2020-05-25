@@ -1,11 +1,9 @@
 import Entities.Point;
 import Model.PointDao;
-import org.junit.jupiter.api.*;
+import org.junit.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class PointDaoTests {
@@ -14,13 +12,13 @@ public class PointDaoTests {
 
     private final Set<Point> points = new HashSet<>();
 
-    @BeforeEach
+    @Before
     public void setupContext() {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
         entityManager = factory.createEntityManager();
     }
 
-    @AfterEach
+    @After
     public void deletePoints() {
         entityManager.getTransaction().begin();
         points.forEach(p -> {
@@ -47,6 +45,6 @@ public class PointDaoTests {
         TypedQuery<Point> query = entityManager.createQuery("SELECT p FROM Point p", Point.class);
         Point first = query.getResultList().get(0);
 
-        Assertions.assertEquals(first, point);
+        Assert.assertEquals(first, point);
     }
 }
