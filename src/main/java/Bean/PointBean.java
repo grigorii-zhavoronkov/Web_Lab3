@@ -64,7 +64,7 @@ public class PointBean implements Serializable {
     }
 
     public void setCorrectToPoint() {
-        point.setCorrect((point.getX() >= -4) && (point.getX() <= 4) && (point.getR() >= 1) && (point.getR() <= 4) ? 1 : 0);
+        point.setCorrect((point.getX() >= -4) && (point.getX() <= 4) && (point.getY() >= -3) && (point.getY() <= 5) && (point.getR() >= 1) && (point.getR() <= 4) ? 1 : 0);
     }
 
     private void setInToPoint() {
