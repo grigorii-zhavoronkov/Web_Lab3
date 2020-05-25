@@ -63,7 +63,7 @@ public class PointBean implements Serializable {
         PrimeFaces.current().dialog().openDynamic("table", options, null);
     }
 
-    private void setCorrectToPoint() {
+    public void setCorrectToPoint() {
         point.setCorrect((point.getX() >= -4) && (point.getX() <= 4) && (point.getR() >= 1) && (point.getR() <= 4) ? 1 : 0);
     }
 
@@ -93,6 +93,22 @@ public class PointBean implements Serializable {
 
     public void setR(float r) {
         point.setR(r);
+    }
+
+    public int getCorrect() {
+        return point.getCorrect();
+    }
+
+    public void setCorrect(int correct) {
+        point.setCorrect(correct);
+    }
+
+    public int getIn() {
+        return point.getIn();
+    }
+
+    public void setIn(int in) {
+        point.setCorrect(in);
     }
 
     private boolean batman (float xx, float y, float R){
