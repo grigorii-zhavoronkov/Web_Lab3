@@ -12,7 +12,7 @@ public class Point implements Serializable {
     @Id
     @GeneratedValue()
     @Column(name = "id")
-    private BigDecimal id;
+    private long id;
 
     @Column(name = "x")
     private float x;
@@ -26,11 +26,11 @@ public class Point implements Serializable {
     @Column(name = "isin")
     private int in;
 
-    public BigDecimal getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(BigDecimal id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -79,19 +79,19 @@ public class Point implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Point that = (Point) o;
+        Point point = (Point) o;
 
-        if (Float.compare(that.x, x) != 0) return false;
-        if (Float.compare(that.y, y) != 0) return false;
-        if (Float.compare(that.r, r) != 0) return false;
-        if (correct != that.correct) return false;
-        if (in != that.in) return false;
-        return id.equals(that.id);
+        if (id != point.id) return false;
+        if (Float.compare(point.x, x) != 0) return false;
+        if (Float.compare(point.y, y) != 0) return false;
+        if (Float.compare(point.r, r) != 0) return false;
+        if (correct != point.correct) return false;
+        return in == point.in;
     }
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
+        int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (x != +0.0f ? Float.floatToIntBits(x) : 0);
         result = 31 * result + (y != +0.0f ? Float.floatToIntBits(y) : 0);
         result = 31 * result + (r != +0.0f ? Float.floatToIntBits(r) : 0);

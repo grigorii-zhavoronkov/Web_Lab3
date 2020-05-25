@@ -39,13 +39,6 @@ public class PointBean implements Serializable {
         PrimeFaces.current().executeScript("drawPoint(" + params + ")");
 
         pointDao.savePoint(point);
-
-        point = new Point();
-        point.setX(0);
-        point.setY(0);
-        point.setR(1);
-        point.setIn(0);
-        point.setCorrect(0);
     }
 
     public List<Point> getPoints() {
@@ -117,7 +110,6 @@ public class PointBean implements Serializable {
         double x = xx+0.0;
         boolean elipce = ( (pow(x,2))/(49*pow(rx,2)) + (pow(y,2))/(9*pow(ry,2)) -1.0 ) <= 0.00000000000001;
         final double x1 = pow(x, 2) / (49 * pow(rx, 2)) + pow(y, 2) / (9 * pow(ry, 2)) - 1.0;
-        System.out.println(x1);
         boolean elipce_down_x = (abs(x/rx)) >= 4;
         boolean elipce_down_y = (y/ry >= -3*sqrt(33)/7.0) && (y/ry <= 0);
         boolean elipce_up_x = (abs(x/rx)) >= 3;
