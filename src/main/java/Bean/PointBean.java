@@ -63,11 +63,16 @@ public class PointBean implements Serializable {
         PrimeFaces.current().dialog().openDynamic("table", options, null);
     }
 
-    private void setCorrectToPoint() {
-        point.setCorrect((point.getX() >= -4) && (point.getX() <= 4) && (point.getR() >= 1) && (point.getR() <= 4) ? 1 : 0);
+    public void setCorrectToPoint() {
+        point.setCorrect((point.getX() >= -4) &&
+                (point.getX() <= 4) &&
+                (point.getY() >= -3) &&
+                (point.getY() <= 5) &&
+                (point.getR() >= 1) &&
+                (point.getR() <= 4) ? 1 : 0);
     }
 
-    private void setInToPoint() {
+    public void setInToPoint() {
         point.setIn(batman(point.getX(), point.getY(), point.getR()) ? 1 : 0);
     }
 
@@ -95,7 +100,18 @@ public class PointBean implements Serializable {
         point.setR(r);
     }
 
-    private boolean batman (float xx, float y, float R){
+    public int getCorrect() {
+        return point.getCorrect();
+    }
+
+    public int getIn() {
+        return point.getIn();
+    }
+
+    public boolean batman (float xx, float y, float R){
+        if (point.getCorrect() == 0) {
+            return false;
+        }
         double rx = R/7.0;
         double ry = R/6.0;
         double x = xx+0.0;
@@ -106,11 +122,7 @@ public class PointBean implements Serializable {
         boolean elipce_down_y = (y/ry >= -3*sqrt(33)/7.0) && (y/ry <= 0);
         boolean elipce_up_x = (abs(x/rx)) >= 3;
         boolean elipce_up_y = y>=0;
-        System.out.println("Elipce "+elipce);
-        System.out.println("Elipce elipce_down_x "+elipce_down_x);
-        System.out.println("Elipce elipce_down_y "+elipce_down_y);
-        System.out.println("Elipce elipce_up_x "+elipce_up_x);
-        System.out.println("Elipce elipce_up_y "+elipce_up_y);
+
         boolean full_elipce = (elipce&elipce_down_x&elipce_down_y) || (elipce&elipce_up_x&elipce_up_y);
 
         boolean smile = ( ((3*sqrt(33)-7)*pow(x,2))/(-112.0*pow(rx,2)) + abs(x/rx)/2
